@@ -13,6 +13,23 @@ app.get("/tasks", (req, res) => {
     })
 })
 
+app.delete("/tasks/:id", (req, res) => {
+  const id = Number(req.params.id)
+
+  const taskIndex = tasks.findIndex((t) => t.id === id)   //LOCALIZA A POSIÇÃO DA TASK NO ARRAY//
+
+  if (taskIndex === -1) {
+    return res.status(404).json({ error: "Task not found" })
+  }
+
+  const removedTask = tasks.splice(taskIndex, 1)[0] //REMOVE 1 1ITEM DO ARRAY NAQUELA POSIÇÃO//
+
+  return res.status(200).json({
+    message: "Task removed successfully",
+    removedTask
+  })
+})
+
 
 app.get("/", (req, res) => {
   res.send("Backend Task Manager rodando")
