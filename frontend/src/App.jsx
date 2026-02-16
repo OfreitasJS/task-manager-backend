@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { getTasks } from "./services/api"
 
 export default function App() {
   const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const [title, setTitle] = useState("");
+  const [creating, setCreating] = useState(false);
+
 
   useEffect(() => {
     async function load() {

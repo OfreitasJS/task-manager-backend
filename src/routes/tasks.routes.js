@@ -8,8 +8,8 @@ const {
   deleteTask
 } = require("../controllers/tasks.controller")
 
-router.get("/tasks", listTasks)
-router.post("/tasks", createTask)
+router.get("/", listTasks)
+router.post("/", createTask)
 router.put("/tasks/:id", updateTask)
 router.delete("/tasks/:id", deleteTask)
 
